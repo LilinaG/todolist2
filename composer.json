@@ -1,0 +1,14 @@
+{
+    "name": "lguti/todolist2",
+    "autoload": {
+        "psr-4": {
+            "Lguti\\Todolist2\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "LilinaG"
+        }
+    ],
+    "require": {}
+}
