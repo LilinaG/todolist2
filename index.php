@@ -9,8 +9,13 @@ $taskController = new TasksController;
 
 // 2. Ejecutar el métdo store() del controlador
 
-$taskController -> store([
-    "task" => "Hacer maletas para vacaciones",
-    "descripcion" => "meter bikinis",
+/*$taskController -> store([
+    "task" => "Hacer comida para la semana",
+    "descripcion" => "hacer lista de la compra",
     "creation_date" => "2023-07-23"
-]);
+]);*/
+
+//3. Ejecutar el método INDEX
+$taskController -> index();
+
+
