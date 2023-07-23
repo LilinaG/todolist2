@@ -60,8 +60,6 @@ class TasksController{
      */
 
     function index(){
-              
-       
                //Definir la Query de INSERT
        
                 $query = "SELECT * FROM tasks";
@@ -80,4 +78,31 @@ class TasksController{
                  }
                  echo "No tasks registered";
     }
+
+
+     /**
+     * SHOW: mostrar un registro específico.
+     */
+
+     function show($id){
+         //Definir la Query de INSERT
+       
+         $query = "SELECT * FROM tasks WHERE id=:id";
+
+         //Preparar la Query
+         $stm = $this->connection -> get_connection()->prepare($query);
+
+         //Ejecutar la Query
+         $stm -> execute([":id" => $id]);
+         $result = $stm-> fetch(\PDO::FETCH_ASSOC);
+
+         if(!empty($result)){
+            echo $result['task'];  
+        } else{
+         echo "Task not found";
+        }
+     }
+
+
+
 }

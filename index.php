@@ -16,6 +16,8 @@ $taskController = new TasksController;
 ]);*/
 
 //3. Ejecutar el método INDEX
-$taskController -> index();
+//$taskController -> index();
 
 
+//4. Ejectuar el método SHOW del controlador
+$taskController -> show(6);
