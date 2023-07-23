@@ -2,8 +2,9 @@
     "name": "lguti/todolist2",
     "autoload": {
         "psr-4": {
-            "Database\\":"database/"
-        }
+            "Database\\":"database/",
+            "App\\":"app/"
+         
     },
     "authors": [
         {
@@ -11,4 +12,6 @@
         }
     ],
     "require": {}
+}
+
 }
