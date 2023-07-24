@@ -71,12 +71,8 @@ class TasksController{
                 $stm -> execute();
                 $results = $stm-> fetchAll(\PDO::FETCH_ASSOC);
 
-                if(!empty($results)){
-                    foreach($results as $result){
-                        echo $result['task']."<br>";
-                    }
-                 }
-                 echo "No tasks registered";
+                require("../src/views/tasksView/index.php");           
+
     }
 
 
