@@ -32,6 +32,9 @@ class RouterHandler{
             case "delete":
                 $resource -> delete($id);
                 break;
+            case "put":
+                $resource->update($id, $this->data);
+                break;
         }
 
     }

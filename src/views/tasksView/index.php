@@ -14,13 +14,17 @@
     <?php foreach($results as $result): ?>
 
         <li>
-            <?= $result["task"] ?>
-            <?= $result["descripcion"] ?>
-            <?= $result["creation_date"] ?>
+        <?= $result["task"] ?>.<br>
+        <b>Descripcion:</b> <?= $result["descripcion"] ?>.<br>
+        <b>Creation Date:</b> <?= $result["creation_date"] ?>
             <form action="/todolist2/public/tasks/<?= $result["id"] ?>" method="post">
                 <input type="hidden" name="method" value="delete">
                 <button type="submit">Delete</button>
             </form>
+            <a href="/todolist2/public/tasks/edit/{ID_DE_LA_TAREA}<?= $result["id"] ?>">
+                <button>Edit</button>
+            </a>
+        
         </li>
         
         <?php endforeach; ?>

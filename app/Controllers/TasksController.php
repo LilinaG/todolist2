@@ -133,4 +133,50 @@ class TasksController{
         }
     }
     
+
+            /**
+     * EDIT: Mostrar el formulario de edición de una tarea específica.
+     */
+    public function edit($id) {
+        // Definir la Query para obtener los datos de la tarea a editar
+        $query = "SELECT * FROM tasks WHERE id=:id";
+
+        // Preparar la Query
+        $stm = $this->connection->get_connection()->prepare($query);
+
+        // Ejecutar la Query
+        $stm->execute([":id" => $id]);
+        $result = $stm->fetch(\PDO::FETCH_ASSOC);
+
+        // Verificar si se encontró la tarea
+        if (!empty($result)) {
+            // Mostrar el formulario de edición con los datos de la tarea
+            require("../src/views/tasksView/edit.php");
+        } else {
+            echo "Task not found";
+        }
+    }
+
+    /**
+     * UPDATE: Actualizar una tarea específica.
+     */
+    public function update($id, $data) {
+        // Definir la Query para actualizar la tarea en la base de datos
+        $query = "UPDATE tasks SET task = ?, descripcion = ?, creation_date = ? WHERE id = ?";
+
+        // Preparar la Query
+        $stm = $this->connection->get_connection()->prepare($query);
+
+        // Ejecutar la Query
+        $results = $stm->execute([
+            $data['task'],
+            $data['descripcion'],
+            $data['creation_date'],
+            $id
+        ]);
+
+        // Redirigir a la página de detalles de la tarea actualizada
+        header("Location: /todolist2/public/tasks/$id");
+    }
+    
 }
