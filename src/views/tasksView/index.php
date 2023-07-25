@@ -7,23 +7,23 @@
 </head>
 <body>
     <h1>TODO LIST</h1>
-    <a href="/bookStore/public/library/create">
-        <button>Add task</button>
+    <a href="/todolist2/public/tasks/create">
+        <button>Add tasks</button>
     </a>
     <ul>
-        <?php foreach($results as $result): ?>
-            <li>
-                <?= $result["task"]?>
-                <?= $result["descripcion"]?>
-                <form action="/bookStore/public/library/ 
-                    <?=$result["id"]?>"
-                    method="post"
-                >
-                    <input type="hidden" name="method" value="delete">
-                    <button type="submit">Delete</button>
-                </form>
-            </li>
-        <?php endforeach;?>
+    <?php foreach($results as $result): ?>
+
+        <li>
+            <?= $result["task"] ?>
+            <?= $result["descripcion"] ?>
+            <?= $result["creation_date"] ?>
+            <form action="/todolist2/public/tasks/<?= $result["id"] ?>" method="post">
+                <input type="hidden" name="method" value="delete">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+        
+        <?php endforeach; ?>
     </ul>
 </body>
 </html>

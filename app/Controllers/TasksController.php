@@ -43,6 +43,7 @@ class TasksController{
                                   $data['descripcion'],
                                   $data['creation_date']
                                  ]);
+            header("Location:/todolist2/public/tasks/");
         try {
             if (!empty($results)) {
                 $statusCode = 200;
@@ -54,6 +55,17 @@ class TasksController{
                 echo("An error occurred during database registration");
             } 
     }
+
+
+     /**
+     * CREATE: Capturar los datos del formulario para el store 
+     */
+
+
+     public function create(){
+        require("../src/views/tasksView/create.php");
+
+     }
 
      /**
      * INDEX: Listar registros de la BBDD
@@ -99,6 +111,26 @@ class TasksController{
         }
      }
 
+     /**
+     * DELETE: Elimina un registro seleccionado.
+     */
 
+     public function delete($id){
+         //Definir la Query de INSERT
+       
+         $query = "DELETE FROM tasks WHERE id=:id";
 
+         //Preparar la Query
+         $result= $stm = $this->connection -> get_connection()->prepare($query);
+
+         //Ejecutar la Query
+         $stm -> execute([":id" => $id]);
+
+         if(!empty($result)){
+            header("Location:/todolist2/public/tasks/");
+        } else{
+         echo "Task not deleted";
+        }
+    }
+    
 }
